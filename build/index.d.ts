@@ -1,2 +1,3 @@
 import { Exception } from "./exception";
-export { Exception };
+import { ExceptionHandler } from "./handler";
+export { Exception, ExceptionHandler, };
