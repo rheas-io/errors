@@ -1,9 +1,9 @@
 import { Exception } from "./exception";
-import { ILogger } from "@laress/contracts/log";
-import { IRequest, ClassOf } from "@laress/contracts";
-import { IResponse } from "@laress/contracts/core/response";
-import { IContainer } from "@laress/contracts/container/container";
-import { IException, IExceptionHandler } from "@laress/contracts/errors";
+import { ILogger } from "@rheas/contracts/log";
+import { IRequest, ClassOf } from "@rheas/contracts";
+import { IResponse } from "@rheas/contracts/core/response";
+import { IContainer } from "@rheas/contracts/container/container";
+import { IException, IExceptionHandler } from "@rheas/contracts/errors";
 
 export class ExceptionHandler implements IExceptionHandler {
 

@@ -1,10 +1,10 @@
 {
-  "name": "@laress/errors",
+  "name": "@rheas/errors",
   "version": "0.0.1",
-  "description": "Custom exception and error handling module of laress framework",
+  "description": "Custom exception and error handling module of Rheas framework",
   "main": "index.js",
   "keywords": [
-    "laress",
+    "rheas",
     "express",
     "framework",
     "nodejs",
@@ -32,12 +32,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/laress-io/errors.git"
+    "url": "git+https://github.com/rheas-io/errors.git"
   },
   "author": "Kalesh Kaladharan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/laress-io/errors/issues"
+    "url": "https://github.com/rheas-io/errors/issues"
   },
-  "homepage": "https://github.com/laress-io/errors#readme"
+  "homepage": "https://github.com/rheas-io/errors#readme"
 }

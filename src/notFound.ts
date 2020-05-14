@@ -1,5 +1,5 @@
 import { Exception } from "./exception";
-import { StringObject } from "@laress/contracts";
+import { StringObject } from "@rheas/contracts";
 
 export class NotFoundException extends Exception {
 

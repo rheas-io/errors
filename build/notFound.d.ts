@@ -1,5 +1,5 @@
 import { Exception } from "./exception";
-import { StringObject } from "@laress/contracts";
+import { StringObject } from "@rheas/contracts";
 export declare class NotFoundException extends Exception {
     /**
      * Creates a 404 exception

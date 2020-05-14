@@ -1,7 +1,7 @@
-import { IRequest, ClassOf } from "@laress/contracts";
-import { IResponse } from "@laress/contracts/core/response";
-import { IContainer } from "@laress/contracts/container/container";
-import { IException, IExceptionHandler } from "@laress/contracts/errors";
+import { IRequest, ClassOf } from "@rheas/contracts";
+import { IResponse } from "@rheas/contracts/core/response";
+import { IContainer } from "@rheas/contracts/container/container";
+import { IException, IExceptionHandler } from "@rheas/contracts/errors";
 export declare class ExceptionHandler implements IExceptionHandler {
     /**
      * The container instance
