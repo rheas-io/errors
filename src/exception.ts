@@ -1,3 +1,4 @@
+import { IApp } from "@rheas/contracts/core/app";
 import { IException } from "@rheas/contracts/errors";
 import { IResponse } from "@rheas/contracts/core/response";
 import { IRequest, AnyObject, StringObject } from "@rheas/contracts";
@@ -98,15 +99,16 @@ export class Exception implements IException {
      * @param res 
      */
     public jsonResponse(req: IRequest, res: IResponse): IResponse {
+        const app: IApp = req.get('app');
         const errorObject: AnyObject = {};
 
         errorObject["message"] = this.message || "Server error";
         errorObject["status"] = this.status || 500;
 
-        if (req.app()?.config('app.debug')) {
+        if (app && app.config('app.debug')) {
             errorObject["trace"] = this.getPrintableTrace();
         }
-        res.write(errorObject);
+        res.setContent(errorObject);
 
         return res;
     }

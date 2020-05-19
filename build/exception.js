@@ -87,14 +87,14 @@ var Exception = /** @class */ (function () {
      * @param res
      */
     Exception.prototype.jsonResponse = function (req, res) {
-        var _a;
+        var app = req.get('app');
         var errorObject = {};
         errorObject["message"] = this.message || "Server error";
         errorObject["status"] = this.status || 500;
-        if ((_a = req.app()) === null || _a === void 0 ? void 0 : _a.config('app.debug')) {
+        if (app && app.config('app.debug')) {
             errorObject["trace"] = this.getPrintableTrace();
         }
-        res.write(errorObject);
+        res.setContent(errorObject);
         return res;
     };
     /**
