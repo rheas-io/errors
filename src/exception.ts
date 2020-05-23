@@ -1,7 +1,6 @@
 import { IApp } from "@rheas/contracts/core/app";
 import { IException } from "@rheas/contracts/errors";
-import { IResponse } from "@rheas/contracts/core/response";
-import { IRequest, AnyObject, StringObject } from "@rheas/contracts";
+import { IRequest, IResponse, AnyObject, StringObject } from "@rheas/contracts";
 
 /**
  * We are not extending the default Error class as it will introduce 

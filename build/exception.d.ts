@@ -1,6 +1,5 @@
 import { IException } from "@rheas/contracts/errors";
-import { IResponse } from "@rheas/contracts/core/response";
-import { IRequest, StringObject } from "@rheas/contracts";
+import { IRequest, IResponse, StringObject } from "@rheas/contracts";
 /**
  * We are not extending the default Error class as it will introduce
  * errors when transpiled using Babel. Babel have some issues transpiling

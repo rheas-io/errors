@@ -1,7 +1,6 @@
 import { Exception } from "./exception";
 import { ILogger } from "@rheas/contracts/log";
-import { IRequest, ClassOf } from "@rheas/contracts";
-import { IResponse } from "@rheas/contracts/core/response";
+import { IRequest, IResponse, ClassOf } from "@rheas/contracts";
 import { IContainer } from "@rheas/contracts/container/container";
 import { IException, IExceptionHandler } from "@rheas/contracts/errors";
 

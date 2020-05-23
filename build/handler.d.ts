@@ -1,5 +1,4 @@
-import { IRequest, ClassOf } from "@rheas/contracts";
-import { IResponse } from "@rheas/contracts/core/response";
+import { IRequest, IResponse, ClassOf } from "@rheas/contracts";
 import { IContainer } from "@rheas/contracts/container/container";
 import { IException, IExceptionHandler } from "@rheas/contracts/errors";
 export declare class ExceptionHandler implements IExceptionHandler {
