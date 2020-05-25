@@ -88,7 +88,7 @@ export class Exception implements IException {
      * @param res 
      */
     public renderResponse(req: IRequest, res: IResponse): IResponse {
-        return res.redirect('/');
+        return req.redirect().to('/');
     }
 
     /**

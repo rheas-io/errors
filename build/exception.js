@@ -78,7 +78,7 @@ var Exception = /** @class */ (function () {
      * @param res
      */
     Exception.prototype.renderResponse = function (req, res) {
-        return res.redirect('/');
+        return req.redirect().to('/');
     };
     /**
      * @inheritdoc
