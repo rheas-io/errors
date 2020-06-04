@@ -40,6 +40,12 @@ export declare class Exception implements IException {
      */
     constructor(message?: string, status?: number, headers?: StringObject);
     /**
+     * @inheritdoc
+     *
+     * @param err
+     */
+    setException(err: Error): IException;
+    /**
      * Creates an exception from general error.
      *
      * @param error

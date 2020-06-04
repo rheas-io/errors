@@ -53,6 +53,17 @@ export class Exception implements IException {
     }
 
     /**
+     * @inheritdoc
+     * 
+     * @param err 
+     */
+    public setException(err: Error): IException {
+        Error.captureStackTrace(err);
+
+        return this;
+    }
+
+    /**
      * Creates an exception from general error.
      * 
      * @param error 

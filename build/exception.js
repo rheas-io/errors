@@ -48,6 +48,15 @@ var Exception = /** @class */ (function () {
         Error.captureStackTrace(this);
     }
     /**
+     * @inheritdoc
+     *
+     * @param err
+     */
+    Exception.prototype.setException = function (err) {
+        Error.captureStackTrace(err);
+        return this;
+    };
+    /**
      * Creates an exception from general error.
      *
      * @param error
