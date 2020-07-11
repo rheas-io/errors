@@ -40,7 +40,7 @@ export declare class Exception implements IException {
      */
     constructor(message?: string, status?: number, headers?: StringObject);
     /**
-     * @inheritdoc
+     * Sets the given error as this exceptions error/stack.
      *
      * @param err
      */
@@ -60,14 +60,15 @@ export declare class Exception implements IException {
      */
     bindToResponse(response: IResponse): IResponse;
     /**
-     * @inheritdoc
+     * The handler that sets a redirect/view response for the exception.
      *
      * @param req
      * @param res
      */
     renderResponse(req: IRequest, res: IResponse): IResponse;
     /**
-     * @inheritdoc
+     * Sets the error object on response body. This object contains error message,
+     * status and optionally the stack trace if the app is in debug mode.
      *
      * @param req
      * @param res

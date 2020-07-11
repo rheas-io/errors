@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var helpers_1 = require("@rheas/support/helpers");
 /**
  * We are not extending the default Error class as it will introduce
  * errors when transpiled using Babel. Babel have some issues transpiling
@@ -48,7 +49,7 @@ var Exception = /** @class */ (function () {
         Error.captureStackTrace(this);
     }
     /**
-     * @inheritdoc
+     * Sets the given error as this exceptions error/stack.
      *
      * @param err
      */
@@ -81,7 +82,7 @@ var Exception = /** @class */ (function () {
         return response;
     };
     /**
-     * @inheritdoc
+     * The handler that sets a redirect/view response for the exception.
      *
      * @param req
      * @param res
@@ -90,17 +91,17 @@ var Exception = /** @class */ (function () {
         return req.redirect().to('/');
     };
     /**
-     * @inheritdoc
+     * Sets the error object on response body. This object contains error message,
+     * status and optionally the stack trace if the app is in debug mode.
      *
      * @param req
      * @param res
      */
     Exception.prototype.jsonResponse = function (req, res) {
-        var app = req.get('app');
         var errorObject = {};
         errorObject["message"] = this.message || "Server error";
         errorObject["status"] = this.status || 500;
-        if (app && app.config('app.debug')) {
+        if (helpers_1.config('app.debug')) {
             errorObject["trace"] = this.getPrintableTrace();
         }
         res.setContent(errorObject);

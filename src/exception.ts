@@ -1,4 +1,4 @@
-import { IApp } from "@rheas/contracts/core/app";
+import { config } from "@rheas/support/helpers";
 import { IException } from "@rheas/contracts/errors";
 import { IRequest, IResponse, AnyObject, StringObject } from "@rheas/contracts";
 
@@ -53,7 +53,7 @@ export class Exception implements IException {
     }
 
     /**
-     * @inheritdoc
+     * Sets the given error as this exceptions error/stack.
      * 
      * @param err 
      */
@@ -93,7 +93,7 @@ export class Exception implements IException {
     }
 
     /**
-     * @inheritdoc
+     * The handler that sets a redirect/view response for the exception.
      * 
      * @param req 
      * @param res 
@@ -103,19 +103,19 @@ export class Exception implements IException {
     }
 
     /**
-     * @inheritdoc
+     * Sets the error object on response body. This object contains error message, 
+     * status and optionally the stack trace if the app is in debug mode.
      * 
      * @param req 
      * @param res 
      */
     public jsonResponse(req: IRequest, res: IResponse): IResponse {
-        const app: IApp = req.get('app');
         const errorObject: AnyObject = {};
 
         errorObject["message"] = this.message || "Server error";
         errorObject["status"] = this.status || 500;
 
-        if (app && app.config('app.debug')) {
+        if (config('app.debug')) {
             errorObject["trace"] = this.getPrintableTrace();
         }
         res.setContent(errorObject);
