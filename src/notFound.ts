@@ -1,16 +1,15 @@
-import { Exception } from "./exception";
+import { HttpException } from "./http";
 import { StringObject } from "@rheas/contracts";
 
-export class NotFoundException extends Exception {
+export class NotFoundException extends HttpException {
 
     /**
      * Creates a 404 exception
      * 
      * @param message 
-     * @param status 
      * @param headers 
      */
-    constructor(message: string = "", status: number = 404, headers: StringObject = {}) {
-        super(message, status, headers);
+    constructor(message: string = "", headers: StringObject = {}) {
+        super(404, message, headers);
     }
 }

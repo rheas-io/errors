@@ -13,20 +13,22 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var http_1 = require("./http");
-var NotFoundException = /** @class */ (function (_super) {
-    __extends(NotFoundException, _super);
+var exception_1 = require("./exception");
+var HttpException = /** @class */ (function (_super) {
+    __extends(HttpException, _super);
     /**
-     * Creates a 404 exception
+     * Creates an http exception
      *
      * @param message
+     * @param status
      * @param headers
      */
-    function NotFoundException(message, headers) {
+    function HttpException(status, message, headers) {
+        if (status === void 0) { status = 500; }
         if (message === void 0) { message = ""; }
         if (headers === void 0) { headers = {}; }
-        return _super.call(this, 404, message, headers) || this;
+        return _super.call(this, message, status, headers) || this;
     }
-    return NotFoundException;
-}(http_1.HttpException));
-exports.NotFoundException = NotFoundException;
+    return HttpException;
+}(exception_1.Exception));
+exports.HttpException = HttpException;
