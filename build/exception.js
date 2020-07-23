@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var helpers_1 = require("@rheas/support/helpers");
+const helpers_1 = require("@rheas/support/helpers");
 /**
  * We are not extending the default Error class as it will introduce
  * errors when transpiled using Babel. Babel have some issues transpiling
  * extended Javascript native classes like Array, Err etc
  */
-var Exception = /** @class */ (function () {
+class Exception {
     /**
      * We will capture the stack trace when this custom exception
      * gets called.
@@ -15,10 +15,7 @@ var Exception = /** @class */ (function () {
      * @param status
      * @param headers
      */
-    function Exception(message, status, headers) {
-        if (message === void 0) { message = ""; }
-        if (status === void 0) { status = 500; }
-        if (headers === void 0) { headers = {}; }
+    constructor(message = "", status = 500, headers = {}) {
         /**
          * Message for this exception
          *
@@ -53,20 +50,20 @@ var Exception = /** @class */ (function () {
      *
      * @param err
      */
-    Exception.prototype.setException = function (err) {
+    setException(err) {
         Error.captureStackTrace(err);
         return this;
-    };
+    }
     /**
      * Creates an exception from general error.
      *
      * @param error
      */
-    Exception.createFromError = function (error) {
-        var exception = new Exception(error.message);
+    static createFromError(error) {
+        const exception = new Exception(error.message);
         exception.stack = error.stack || "";
         return exception;
-    };
+    }
     /**
      * Sets the response status code and exception headers on the response
      * object.
@@ -74,22 +71,22 @@ var Exception = /** @class */ (function () {
      * @param response
      * @param request
      */
-    Exception.prototype.bindToResponse = function (response) {
+    bindToResponse(response) {
         response.statusCode = this.status;
-        for (var index in this.headers) {
+        for (let index in this.headers) {
             response.setHeader(index, this.headers[index]);
         }
         return response;
-    };
+    }
     /**
      * The handler that sets a redirect/view response for the exception.
      *
      * @param req
      * @param res
      */
-    Exception.prototype.renderResponse = function (req, res) {
+    renderResponse(req, res) {
         return req.redirect().to('/');
-    };
+    }
     /**
      * Sets the error object on response body. This object contains error message,
      * status and optionally the stack trace if the app is in debug mode.
@@ -97,8 +94,8 @@ var Exception = /** @class */ (function () {
      * @param req
      * @param res
      */
-    Exception.prototype.jsonResponse = function (req, res) {
-        var errorObject = {};
+    jsonResponse(req, res) {
+        const errorObject = {};
         errorObject["message"] = this.message || "Server error";
         errorObject["status"] = this.status || 500;
         if (helpers_1.config('app.debug')) {
@@ -106,15 +103,14 @@ var Exception = /** @class */ (function () {
         }
         res.setContent(errorObject);
         return res;
-    };
+    }
     /**
      * @inheritdoc
      *
      * @returns array
      */
-    Exception.prototype.getPrintableTrace = function () {
+    getPrintableTrace() {
         return this.stack.split(/\r?\n/g);
-    };
-    return Exception;
-}());
+    }
+}
 exports.Exception = Exception;

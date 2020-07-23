@@ -1,21 +1,7 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var exception_1 = require("./exception");
-var MethodNotAllowedException = /** @class */ (function (_super) {
-    __extends(MethodNotAllowedException, _super);
+const exception_1 = require("./exception");
+class MethodNotAllowedException extends exception_1.Exception {
     /**
      * Creates a method not allowed exception.
      *
@@ -23,14 +9,9 @@ var MethodNotAllowedException = /** @class */ (function (_super) {
      * @param message
      * @param headers
      */
-    function MethodNotAllowedException(methods, message, headers) {
-        if (message === void 0) { message = ""; }
-        if (headers === void 0) { headers = {}; }
-        var _this = this;
+    constructor(methods, message = "", headers = {}) {
         headers['Allow'] = methods.join(', ');
-        _this = _super.call(this, message, 405, headers) || this;
-        return _this;
+        super(message, 405, headers);
     }
-    return MethodNotAllowedException;
-}(exception_1.Exception));
+}
 exports.MethodNotAllowedException = MethodNotAllowedException;
