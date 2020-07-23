@@ -86,7 +86,7 @@ export class ExceptionHandler implements IExceptionHandler {
 
         res = err.bindToResponse(res);
 
-        if (req.acceptsJson()) {
+        if (req.contents().acceptsJson()) {
             return err.jsonResponse(req, res);
         }
         return err.renderResponse(req, res);

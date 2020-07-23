@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var exception_1 = require("./exception");
-var ExceptionHandler = /** @class */ (function () {
+const exception_1 = require("./exception");
+class ExceptionHandler {
     /**
      * Creates a new exception handler.
      *
      * @param app
      */
-    function ExceptionHandler(app) {
+    constructor(app) {
         /**
          * These field won't be sent back when showing errors.
          *
@@ -30,34 +30,34 @@ var ExceptionHandler = /** @class */ (function () {
      *
      * @param err
      */
-    ExceptionHandler.prototype.prepareException = function (err) {
+    prepareException(err) {
         if (!(err instanceof exception_1.Exception)) {
             err = exception_1.Exception.createFromError(err);
         }
         return err;
-    };
+    }
     /**
      * @inheritdoc
      *
      * @param err
      */
-    ExceptionHandler.prototype.report = function (err) {
-        var logger = this.app.get('logger');
+    report(err) {
+        const logger = this.app.get('logger');
         try {
             if (logger && this.shouldReport(err)) {
                 logger.logException(err);
             }
         }
         catch (error) { }
-    };
+    }
     /**
      * Checks if an exception is reportable or not.
      *
      * @param err
      */
-    ExceptionHandler.prototype.shouldReport = function (err) {
-        return !!this.dontReport.find(function (classOf) { return err instanceof classOf; });
-    };
+    shouldReport(err) {
+        return !!this.dontReport.find(classOf => err instanceof classOf);
+    }
     /**
      * Returns an error response with headers and body set.
      *
@@ -65,13 +65,12 @@ var ExceptionHandler = /** @class */ (function () {
      * @param req
      * @param res
      */
-    ExceptionHandler.prototype.responseFromError = function (err, req, res) {
+    responseFromError(err, req, res) {
         res = err.bindToResponse(res);
-        if (req.acceptsJson()) {
+        if (req.contents().acceptsJson()) {
             return err.jsonResponse(req, res);
         }
         return err.renderResponse(req, res);
-    };
-    return ExceptionHandler;
-}());
+    }
+}
 exports.ExceptionHandler = ExceptionHandler;
