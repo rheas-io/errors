@@ -1,5 +1,3 @@
-import { Exception } from "./exception";
+import { Exception } from './exception';
 
-export class SuspiciousOperationException extends Exception {
-
-}
+export class SuspiciousOperationException extends Exception {}
