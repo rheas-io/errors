@@ -1,4 +1,4 @@
-import { config } from '@rheas/support/helpers';
+import { IApp } from '@rheas/contracts/core/app';
 import { IException } from '@rheas/contracts/errors';
 import { IRequest, IResponse, AnyObject, StringObject } from '@rheas/contracts';
 
@@ -114,7 +114,9 @@ export class Exception implements IException {
         errorObject['message'] = this.message || 'Server error';
         errorObject['status'] = this.status || 500;
 
-        if (config('app.debug')) {
+        const app: IApp = req.get('app');
+
+        if (app && app.configs().get('app.debug')) {
             errorObject['trace'] = this.getPrintableTrace();
         }
         res.setContent(errorObject);
