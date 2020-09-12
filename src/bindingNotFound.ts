@@ -1,6 +1,6 @@
 import { Exception } from './exception';
 
-export class BindingNotFound extends Exception {
+export class BindingNotFoundException extends Exception {
     /**
      * The key for which the container binding was not found.
      *
