@@ -48,7 +48,9 @@ export class ExceptionHandler implements IExceptionHandler {
     }
 
     /**
-     * @inheritdoc
+     * Logs the error report. Checks the exception to see if it is present
+     * in the don't report field. Only exceptions that are not in that
+     * property will be logged.
      *
      * @param err
      */
