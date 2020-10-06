@@ -55,10 +55,10 @@ export class ExceptionHandler implements IExceptionHandler {
      * @param err
      */
     public report(err: IException): void {
-        const logger: ILogger = this.app.get('logger');
-
         try {
-            if (logger && this.shouldReport(err)) {
+            const logger: ILogger = this.app.get('logger');
+
+            if (this.shouldReport(err)) {
                 logger.logException(err);
             }
         } catch (error) {}
