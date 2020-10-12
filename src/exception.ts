@@ -98,7 +98,7 @@ export class Exception implements IException {
      * @param res
      */
     public renderResponse(req: IRequest, res: IResponse): IResponse {
-        return res; //req.redirect().to('/');
+        return this.jsonResponse(req, res); //req.redirect().to('/');
     }
 
     /**
@@ -119,9 +119,7 @@ export class Exception implements IException {
         if (app && app.configs().get('app.debug')) {
             errorObject['trace'] = this.getPrintableTrace();
         }
-        res.setContent(errorObject);
-
-        return res;
+        return res.json(errorObject);
     }
 
     /**
