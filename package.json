@@ -1,6 +1,6 @@
 {
   "name": "@rheas/errors",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Custom exception and error handling module of Rheas framework",
   "main": "index.js",
   "keywords": [
